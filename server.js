@@ -5,11 +5,64 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var projector1=   {
+title:'projector1',
+heading:'projector1',
+date:'oct 10 1986',
+content: `  <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>   `
+
+};
+
+function createtemplate(data){
+    var title= data.title;
+    var heading= data.heading;
+    var date= data.date;
+    var content = data.content;
+var htmltemplate=`<html>
+<head>
+    <title>
+    ${title}
+        </title>
+        <meta name="viewport content="width-device-width,initial-scale=1"/>
+        
+        <link href="/ui/style.css" rel="stylesheet" />
+        
+</head>
+    <body>
+  <div class="container">
+        <div>
+            <a href="/">Home</a>
+        </div>
+        </hr>
+        <h3>
+        ${heading}
+        </h3>
+<div>
+${date}
+</div>
+<div>
+    ${content}
+</div>
+</body>
+</html>
+`;
+return htmltemplate;
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/projector1',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'firstpage.html'));
+    res.send(createtemplate(projector1));
 })
 app.get('/projector2',function(req,res){
     res.sendFile(path.join(__dirname, 'ui', 'second.html'));
