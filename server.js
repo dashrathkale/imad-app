@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/projector1',function(req,res){
-    res.send('register your projecto1 problem');
+    res.sendFile(path.join(__dirname, 'ui', 'firstpage.html'));
 })
 app.get('/projector2',function(req,res){
     res.send('register your projector2 problem ');
