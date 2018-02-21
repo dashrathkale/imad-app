@@ -8,13 +8,13 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/projector Query',function(req,res){
+app.get('/projector',function(req,res){
     res.send('register your projector problem');
 })
-app.get('/projector Query1',function(req,res){
+app.get('/projector1',function(req,res){
     res.send('register your projector problem ');
 })
-app.get('/projector Query2',function(req,res){
+app.get('/projector2',function(req,res){
     res.send('register your projector problem ');
 })
 app.get('/ui/style.css', function (req, res) {
