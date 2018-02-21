@@ -8,14 +8,14 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/projector',function(req,res){
-    res.send('register your projector problem');
-})
 app.get('/projector1',function(req,res){
-    res.send('register your projector problem ');
+    res.send('register your projecto1 problem');
 })
 app.get('/projector2',function(req,res){
-    res.send('register your projector problem ');
+    res.send('register your projector2 problem ');
+})
+app.get('/projector3',function(req,res){
+    res.send('register your projector3 problem ');
 })
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
