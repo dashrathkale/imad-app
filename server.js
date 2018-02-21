@@ -9,13 +9,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/projector Query',function(req,res){
-    res.sendfile('register your projector problem   ');
+    res.send('register your projector problem');
 })
 app.get('/projector Query1',function(req,res){
-    res.sendfile('register your projector problem   ');
+    res.send('register your projector problem ');
 })
 app.get('/projector Query2',function(req,res){
-    res.sendfile('register your projector problem   ');
+    res.send('register your projector problem ');
 })
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
