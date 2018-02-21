@@ -12,10 +12,10 @@ app.get('/projector1',function(req,res){
     res.sendFile(path.join(__dirname, 'ui', 'firstpage.html'));
 })
 app.get('/projector2',function(req,res){
-    res.send('register your projector2 problem ');
+    res.sendFile(path.join(__dirname, 'ui', 'second.html'));
 })
 app.get('/projector3',function(req,res){
-    res.send('register your projector3 problem ');
+    res.sendFile(path.join(__dirname, 'ui', 'third.html'));
 })
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
