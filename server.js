@@ -4,8 +4,10 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+
 var projector: {
-var projector1=   {
+    
+     projector1 :  {
 title:'projector1',
 heading:'projector1',
 date:'oct 10 1986',
@@ -20,7 +22,7 @@ content: `  <p>
     </p>   `
 
 };
-var projector2={title:'projector2',
+ projector2 :{title:'projector2',
 heading:'proj2',
 date:'dec 10 1986',
 content: `  <p>
@@ -34,7 +36,7 @@ content: `  <p>
     </p>   `
 
 };
-var projector3={title:'projector3',
+ projector3 :{title:'projector3',
 heading:'proj3',
 date:'nov 10 1986',
 content: `  <p>
