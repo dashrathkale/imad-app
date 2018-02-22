@@ -7,7 +7,7 @@ app.use(morgan('combined'));
 
 var projector= {
     
-     projector1 :  {
+     'projector1' :  {
 title:'projector1',
 heading:'projector1',
 date:'oct 10 1986',
@@ -22,7 +22,7 @@ content: `  <p>
     </p>   `
 
 },
- projector2 :{  title:'projector2',
+ 'projector2' :{  title:'projector2',
 heading:'proj2',
 date:'dec 10 1986',
 content: `  <p>
@@ -36,7 +36,7 @@ content: `  <p>
     </p>   `
 
 },
- projector3 :{title:'projector3',
+ 'projector3' :{title:'projector3',
 heading:'proj3',
 date:'nov 10 1986',
 content: `  <p>
@@ -93,7 +93,7 @@ app.get('/', function (req, res) {
 });
 app.get('/:projectorname',function(req,res){
 var    projectorname=req.params.projectorname
-    res.send( createtemplate (projector[proj1]));
+    res.send( createtemplate (projector[projectorname]));
 })
 
 app.get('/ui/style.css', function (req, res) {
