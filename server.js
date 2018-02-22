@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var projector: {
+var projector= {
     
      projector1 :  {
 title:'projector1',
