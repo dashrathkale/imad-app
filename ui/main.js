@@ -1,5 +1,5 @@
 console.log('Loaded!');
-var element=document.get.elementbid('main-text');
+var element=document.getElementById('main-text');
 
 
-element ineerHTML="new value"
+element ineerHTML="new value";
