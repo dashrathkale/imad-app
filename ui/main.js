@@ -2,5 +2,5 @@ console.log('Loaded!');
 
 
 
-var element=document.getElementById('maint-text');
+var element=document.getElementById('mt');
 element.innerHTML='dashrath';
