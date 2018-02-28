@@ -8,5 +8,5 @@ element.innerHTML='dashrath';
 var img=document.getElementById('mad');
 img.onclick=function()
 {
-    img.style.marginleft='100px';
+    img.style.marginleft='200px';
 };
