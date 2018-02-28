@@ -7,7 +7,7 @@ element.innerHTML='dashrath';
 // code for image changes
 var img=document.getElementById('madi');
 var marginLeft=0;
-function moveRight()
+function moveLeft()
 {
     marginLeft=marginLeft+10;
     img.style.marginLeft=marginLeft + 'px';
