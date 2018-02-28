@@ -5,8 +5,8 @@ console.log('Loaded!');
 var element=document.getElementById('mt');
 element.innerHTML='dashrath';
 // code for image changes
-var img=document.getElementById('madi');
-madi.onclick=function()
+var img=document.getElementById('mad');
+mad.onclick=function()
 {
-    madi.style.marginleft='100px';
+    mad.style.marginleft='100px';
 };
