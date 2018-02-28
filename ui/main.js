@@ -6,7 +6,7 @@ var element=document.getElementById('mt');
 element.innerHTML='dashrath';
 // code for image changes
 var img=document.getElementById('madi');
-var marginLeft=0;
+var marginRight=0;
 function moveLeft()
 {
     marginRight=marginRight+10;
