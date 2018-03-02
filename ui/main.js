@@ -17,7 +17,7 @@ img.onclick=function()
     var interval=setInterval(moveLeft,10);
     //img.style.marginLeft='200px';
 };*/
-var button=document.getElementBId('counter');
+var button=document.getElementById('counter');
 button.onclick=function()
 {
     var request=new XMLHttprequest();
