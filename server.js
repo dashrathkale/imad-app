@@ -1,7 +1,13 @@
 var express = require('express');
 var morgan = require('morgan');
-var path = require('path');
-
+var pool=require('pg').pool;
+var config={
+    user:'dashrathkale',
+    database:'dashrathkale',
+    host:'db.imad.hasura-app.oi',
+    port:'5432',
+    password: process.env.DB.PASSWORD
+}
 var app = express();
 app.use(morgan('combined'));
 
@@ -86,7 +92,7 @@ ${date}
 `;
 return htmltemplate;
 
-}
+}
 var counter=0;
 app.get('/counter',function(req,res)
 {
@@ -98,7 +104,23 @@ app.get('/counter',function(req,res)
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  
 });
+var pool=new pool(config);
+app.get('/projector-db',function(req,res){
+    pool.query('select * from projector',function(err,result) {
+        if(err)
+        {
+            res.status(500).send(err.tostring());
+        }
+        else{
+            res.send(json.stringify(result));
+        }
+    });
+    
+});
+    
+
 
 var names=[];
 app.get('/submit-name',function(req,res){
