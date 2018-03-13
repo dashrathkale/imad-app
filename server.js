@@ -6,7 +6,7 @@ var config={
     database:'dashrathkale',
     host:'db.imad.hasura-app.oi',
     port:'5432',
-    password: process.env.DB.PASSWORD
+    password: process.env.DB_PASSWORD
 }
 var app = express();
 app.use(morgan('combined'));
