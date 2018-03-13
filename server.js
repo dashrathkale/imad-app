@@ -89,7 +89,7 @@ ${date}
 </div>
 </body>
 </html>
-`;
+';
 return htmltemplate;
 
 }
