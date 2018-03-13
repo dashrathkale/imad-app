@@ -1,6 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
-var pool=require('pg').pool;
+var Pool=require('pg').Pool;
 var config={
     user:'dashrathkale',
     database:'dashrathkale',
