@@ -19,9 +19,18 @@ app.get('/', function (req, res)
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   
 });
+
+var Pool=new Pool(config);
 app.get('/projector-db',function(req,res){
+pool.query('select * from projector' ,function(err, result) {
     
-}
+    if(err)
+    { res.status(500).send(err.tostring());
+    } else {
+    res.send(JSON.stringify(result));
+    }
+});
+});
 
 
 app.get('/ui/style.css', function (req, res) {
