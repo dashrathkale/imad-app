@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path=require('path');
-var p=require('pg').Pool;
+var Pool=require('pg').Pool;
 
 var config = {
     user:'dashrathkale',
@@ -20,9 +20,9 @@ app.get('/', function (req, res)
   
 });
 
-var P=new Pool(config);
+var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
-p.query('select * from projector' ,function(err, result) {
+pool.query('select * from projector' ,function(err, result) {
     
     if(err)
     { res.status(500).send(err.tostring());
