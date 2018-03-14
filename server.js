@@ -20,9 +20,9 @@ app.get('/', function (req, res)
   
 });
 
-var Pool=new Pool(config);
+var P=new Pool(config);
 app.get('/projector-db',function(req,res){
-pool.query('select * from projector' ,function(err, result) {
+p.query('select * from projector' ,function(err, result) {
     
     if(err)
     { res.status(500).send(err.tostring());
