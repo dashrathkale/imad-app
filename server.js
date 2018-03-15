@@ -1,37 +1,139 @@
-var express = require('express');
+ var express = require('express');
 var morgan = require('morgan');
 var path=require('path');
 var Pool=require('pg').Pool;
-
-var config = {
+var config={
     user:'dashrathkale',
     database:'dashrathkale',
-    host:'db.imad.hasura-app.io',
+    host:'db.imad.hasura-app.oi',
     port:'5432',
-    password:process.env.DB_PASSWORD
-};
+    password: process.env.DB_PASSWORD
+}
 var app = express();
 app.use(morgan('combined'));
 
+var projector= {
+    
+     'projector1' :  {
+title:'projector1',
+heading:'projector1',
+date:'oct 10 1986',
+content: `  <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>   `
 
-app.get('/', function (req, res)
+},
+ 'projector2' :{  title:'projector2',
+heading:'proj2',
+date:'dec 10 1986',
+content: `  <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>   `
+
+},
+ 'projector3' :{title:'projector3',
+heading:'proj3',
+date:'nov 10 1986',
+content: `  <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>
+    <p>
+        A projector or image projector is an optical device that projects an image (or moving images) onto a surface, commonly a projection screen. Most projectors create an image by shining a light through a small transparent lens, but some newer types of projectors can project the image directly, by using lasers. A virtual retinal display, or retinal projector, is a projector that projects an image directly on the retina instead of using an external projection screen.
+    </p>   `
+
+},
+};
+function createtemplate(data){
+    var title= data.title;
+    var heading= data.heading;
+    var date= data.date;
+    var content = data.content;
+var htmltemplate=`<html>
+<head>
+    <title>
+    ${title}
+        </title>
+        <meta name="viewport content="width-device-width,initial-scale=1"/>
+        
+        <link href="/ui/style.css" rel="stylesheet" />
+        
+</head>
+    <body>
+  <div class="container">
+        <div>
+            <a href="/">Home</a>
+        </div>
+        </hr>
+        <h3>
+        ${heading}
+        </h3>
+<div>
+${date}
+</div>
+<div>
+    ${content}
+</div>
+</body>
+</html>
+';
+return htmltemplate;
+
+}
+var counter=0;
+app.get('/counter',function(req,res)
 {
+    counter=counter+1;
+    res.send(counter.toString());
+});
+
+
+
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   
 });
-
 var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
-pool.query('select * from projector' ,function(err, result) {
+    pool.query('select * from projector',function(err,result) {
+        if(err)
+        {
+            res.status(500).send(err.tostring());
+        }
+        else{
+            res.send(json.stringify(result));
+        }
+    });
     
-    if(err)
-    { res.status(500).send(err.toString());
-    } else {
-    res.send(JSON.stringify(result.rows));
-    }
 });
-});
+    
 
+
+var names=[];
+app.get('/submit-name',function(req,res){
+    var name=req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+    
+});
+app.get('/:projectorname',function(req,res){
+var    projectorname=req.params.projectorname
+    res.send( createtemplate (projector[projectorname]));
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
@@ -51,3 +153,5 @@ var port = 80;
 app.listen(port, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
+
+
