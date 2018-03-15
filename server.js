@@ -21,10 +21,8 @@ app.get('/', function (req, res)
 });
 
 var pool=new Pool(config);
-
 app.get('/projector-db',function(req,res){
-    //select * from projector where classname='';delele where a='aadd';
-pool.query("select * from projector ='"+req.params "'" ,function(err, result) {
+pool.query('select * from projector' ,function(err, result) {
     
     if(err)
     { res.status(500).send(err.toString());
