@@ -47,6 +47,36 @@ app.post('/create-user',function(req,res){
     
 });
 
+app.get('/login', function(req,res){
+     var username=req.body.username;
+    var password=req.body.password;
+
+    pool.query('select * from "user" where username=$1', [username], function(err,result){
+        if(err)
+        {
+          res.status(500).send(err.toString());  
+        }
+        else
+        {
+            if(result.rows.lenght===0){
+                req.send(403).send('invalid passward')
+            }
+            else{
+                var dbString=result.rows[0].password;
+                var salt=dbString.spilt('$')[2];
+                var hashedpassword=hash(password,salt);
+                if(hashespassword==dbString){
+                    res.send('creditials are correct');
+                    
+                }
+                else{
+                    res.send(403).send('username and password invaild');
+                }
+            }
+        }
+    });
+});
+
 var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
 pool.query('select * from projector' ,function(err, result) {
