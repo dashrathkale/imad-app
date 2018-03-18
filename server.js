@@ -43,9 +43,9 @@ app.post('/create-user',function(req,res){
              res.send('user successfully created' +username);
         }
         
-    })
+    });
     
-})
+});
 
 var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
