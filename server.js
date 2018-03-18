@@ -19,6 +19,14 @@ app.get('/', function (req, res)
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   
 });
+function hash(input){
+    var hashed=crypto.pbkdf2Sync('input', 'salt', 100000, 64, 'sha512');
+    return hashed.toString('hex');
+}
+app.get('/hash/:input',function(req,res){
+    var hashesString-hash(req.params.input,'this-is-some-read-string');
+    res.send(hashedString);
+})
 
 var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
