@@ -19,7 +19,7 @@ app.get('/', function (req, res)
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   
 });
-function hash(input){
+function hash(input , salt){
     var hashed=crypto.pbkdf2Sync('input', 'salt', 100000, 64, 'sha512');
     return hashed.toString('hex');
 }
