@@ -40,7 +40,7 @@ app.post('/create-user',function(req,res){
         { res.status(500).send(err.toString());
         } 
         else {
-             res.send('user successfully created' +username);
+             res.send('user successfully created' + username);
         }
         
     });
