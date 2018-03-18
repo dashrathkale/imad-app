@@ -26,7 +26,7 @@ function hash(input , salt){
 app.get('/hash/:input',function(req,res){
     var hashedString=hash(req.params.input,'this-is-some-read-string');
     res.send(hashedString);
-})
+});
 
 var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
