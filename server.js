@@ -30,6 +30,7 @@ app.get('/hash/:input',function(req,res){
     var hashedString=hash(req.params.input,'this-is-some-read-string');
     res.send(hashedString);
 });
+/*inserting values into database using hash function
 app.post('/create-user',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
@@ -45,11 +46,11 @@ app.post('/create-user',function(req,res){
         
     });
     
-});
+});*/
 
-/*app.post('/login', function(req,res){
+app.post('/login', function(req,res){
      var username=req.body.username;
-    var password=req.body.password;
+     var password=req.body.password;
 
     pool.query('select * from "user" where username=$1', [username], function(err,result){
         if(err)
@@ -75,7 +76,7 @@ app.post('/create-user',function(req,res){
             }
         }
     });
-}); */
+}); 
 
 var pool=new Pool(config);
 app.get('/projector-db',function(req,res){
