@@ -30,7 +30,7 @@ app.get('/hash/:input',function(req,res){
     var hashedString=hash(req.params.input,'this-is-some-read-string');
     res.send(hashedString);
 });
-/*inserting values into database using hash function
+/*inserting values into database using hash function */
 app.post('/create-user',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
@@ -46,7 +46,7 @@ app.post('/create-user',function(req,res){
         
     });
     
-});*/
+});
 
 app.post('/login', function(req,res){
      var username=req.body.username;
