@@ -48,7 +48,7 @@ app.post('/create-user',function(req,res){
     
 });
 
-app.post('/login', function(req,res){
+app.post('/login', function(req,res) {
      var username=req.body.username;
      var password=req.body.password;
 
@@ -66,7 +66,7 @@ app.post('/login', function(req,res){
                 var dbString=result.rows[0].password;
                 var salt=dbString.spilt('$')[2];
                 var hashedPassword=hash(password,salt);
-                if(hashesPassword==dbString){
+                if(hashesPassword===dbString){
                     res.send('creditials are correct');
                     
                 }
