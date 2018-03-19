@@ -59,7 +59,7 @@ app.post('/login', function(req,res) {
         }
         else
         {
-            if(result.rows.lenght===0){
+            if(result.rows.length===0){
                 req.send(403).send('invalid passward');
             }
             else{
