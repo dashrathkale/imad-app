@@ -17,8 +17,8 @@ img.onclick=function()
     var interval=setInterval(moveLeft,10);
     //img.style.marginLeft='200px';
 };*/
-var button=document.getElementById('counter');
-button.onclick=function()
+var submit=document.getElementById('submit_btn');
+submit.onclick=function()
 {
     var request=new XMLHttpRequest();
     request.onreadystatechange=function()
@@ -27,18 +27,30 @@ button.onclick=function()
         {
             if (request.status===200)
             {
-                var counter=request.responseText;
-                var span=document.getElementById('count');
-                span.innerHTML=counter.toString();
+                alert('logged in sucessfully');
+            }
+            else if(request.status===403)
+            {
+                alert('username and password is incorrect');
+            
+            }
+            else if(request.status==500)
+            {
+                alert('something went wrong with server');
             }
         }
     };
-    request.open('GET','http://dashrathkale.imad.hasura-app.io/counter',true);
-    request.send(null);
+    var username= document.getElementById('username').value;
+    var password=document.getelementById('password').value;
+    console.log(username);
+    console.log(password);
+    request.open('POST','http://dashrathkale.imad.hasura-app.io/login',true);
+    request.send(JSON.stringify({username: username, password:password}));
 };
-
+/*
 var nameInput=document.getElementById('name');
 var name= nameInput.value;
+
 var submit=document.getElementById('submit_btn');
 submit.onclick=function()
 {
@@ -53,3 +65,4 @@ submit.onclick=function()
 };
 
 
+*/
