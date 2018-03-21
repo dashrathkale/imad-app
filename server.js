@@ -60,7 +60,7 @@ app.post('/login', function(req,res) {
         else
         {
             if(result.rows.length===0){
-                req.send(403).send('invalid passward');
+                res.send(403).send('invalid passward');
             }
             else{
                 var dbString=result.rows[0].password;
