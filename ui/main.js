@@ -25,16 +25,16 @@ submit.onclick=function()
     {
         if(request.readyState===XMLHttpRequest.DONE)
         {
-            if (request.status===200)
+            if (request.status === 200)
             {
                 alert('logged in sucessfully');
             }
-            else if(request.status===403)
+            else if(request.status === 403)
             {
                 alert('username and password is incorrect');
             
             }
-            else if(request.status==500)
+            else if(request.status === 500)
             {
                 alert('something went wrong with server');
             }
