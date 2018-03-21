@@ -45,7 +45,7 @@ submit.onclick=function()
     console.log(username);
     console.log(password);
     request.open('POST','http://dashrathkale.imad.hasura-app.io/login',true);
-    request.setRequestHeader('Content-Type','applciation/json');
+    request.setRequestHeader('Content-Type','application/json');
     request.send(JSON.stringify({username: username, password:password}));
 };
 /*
